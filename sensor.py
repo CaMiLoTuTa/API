@@ -21,7 +21,7 @@ def wifi(red, password):
                 return False
     return True
 
-if wifi("PETRA", "PETRA2021"):
+if wifi("Q60", "minumero"):
     print("¡Conexión exitosa!")
     print('Datos de la red (IP/netmask/gw/DNS):', miRed.ifconfig())
     url = "https://api.thingspeak.com/update?api_key=N7L1OOYI6Y4IKQDL"
@@ -32,12 +32,12 @@ if wifi("PETRA", "PETRA2021"):
         temperatura = sensor.temperature()
         humedad = sensor.humidity()
         presion = random.randint(559, 563)
-        print("T={:02d}°C, H={:02d}%, P={:02d}Torr".format(
-            temperatura, humedad, presion))
+        # print("T={:02d}°C, H={:02d}%, P={:02d}Torr".format(
+        #     temperatura, humedad, presion))
         respuesta = urequests.get(
             url+"&field1="+str(temperatura)+"&field2="+str(humedad)+"&field3="+str(presion))
-        print(respuesta.text)
-        print(respuesta.status_code)
+        # print(respuesta.text)
+        # print(respuesta.status_code)
         respuesta.close()
 
 else:
